@@ -1,0 +1,15 @@
+{
+  "triage_label": null,
+  "triage_priority": null,
+  "findings": [
+    {
+      "id": "F-no-tenant-purge",
+      "path": "src/api/admin.py",
+      "title": "Purge uses get_by_id/delete_by_id without tenant constraint",
+      "severity": "critical",
+      "rationale": "New admin purge loads and deletes projects by bare id. In a multi-tenant system this is cross-tenant destructive access unless a separate hard authz gate is proven. Substantive security finding.",
+      "anchor": "tenant"
+    }
+  ],
+  "rationale": "Classic ReviewBench-style domain defect: the diff looks like a normal feature unless you know tenant isolation is a project invariant. Family F only — scoring is findings F1."
+}

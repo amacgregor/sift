@@ -1,0 +1,16 @@
+{
+  "id": "F001_missing_tenant",
+  "family": "F",
+  "title": "PR introduces tenant-less fetch/delete",
+  "language": "python",
+  "tags": ["security", "tenancy", "findings", "domain"],
+  "difficulty": 2,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "feat: add admin purge endpoint for projects",
+  "pr_body": "Adds an internal admin endpoint to purge a project by id for support tooling.",
+  "author": "platform-eng",
+  "files_changed": 2,
+  "additions": 36,
+  "deletions": 2
+}

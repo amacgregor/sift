@@ -1,0 +1,16 @@
+{
+  "id": "T002_authz_bugfix",
+  "family": "T",
+  "title": "Focused authz fix with tests — high human value",
+  "language": "python",
+  "tags": ["security", "authz", "tests", "triage"],
+  "difficulty": 2,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "fix: enforce tenant scope on project delete",
+  "pr_body": "Root cause: delete_project accepted a bare project id and deleted across tenants.\n\nPlan:\n1. Thread tenant_id through the service method\n2. Update SQL to require tenant match\n3. Add regression tests for cross-tenant delete attempts\n\nSecurity severity: high. No API contract change for same-tenant callers.",
+  "author": "core-maintainer",
+  "files_changed": 3,
+  "additions": 48,
+  "deletions": 12
+}

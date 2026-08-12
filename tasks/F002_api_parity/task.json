@@ -1,0 +1,16 @@
+{
+  "id": "F002_api_parity",
+  "family": "F",
+  "title": "Endpoint migration drops active filter",
+  "language": "typescript",
+  "tags": ["api-parity", "regression", "findings", "context"],
+  "difficulty": 2,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "refactor: migrate listUsers to v2 handler",
+  "pr_body": "Replaces the legacy listUsers endpoint with the v2 implementation. Behavior should be unchanged for clients.",
+  "author": "api-team",
+  "files_changed": 2,
+  "additions": 28,
+  "deletions": 22
+}

@@ -1,0 +1,6 @@
+{
+  "triage_label": "likely_low_value",
+  "triage_priority": 0.15,
+  "findings": [],
+  "rationale": "Large multi-file rewrite with a one-line description, no plan, no tests, and mostly formatting/rename churn. A maintainer should not spend deep review budget here first — classic attention waste under AI volume. Gold is likely_low_value, not a security finding task."
+}

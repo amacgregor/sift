@@ -1,0 +1,6 @@
+{
+  "triage_label": "needs_human",
+  "triage_priority": 0.95,
+  "findings": [],
+  "rationale": "Small, tested, security-relevant change with a clear plan and regression tests. Definitely worth human attention (needs_human). Finding-quality for the pre-fix defect lives in F001; this task is pure triage so the suite separates attention allocation from bug-hunting."
+}

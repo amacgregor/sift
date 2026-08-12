@@ -1,0 +1,15 @@
+{
+  "triage_label": null,
+  "triage_priority": null,
+  "findings": [
+    {
+      "id": "F-parity-active-filter",
+      "path": "src/routes/users.ts",
+      "title": "v2 listUsers drops is_active filter present in legacy",
+      "severity": "high",
+      "rationale": "Legacy handler only returned active users (is_active === true). v2 returns all rows. That is an API parity regression even if the migration compiles and tests only check 200 OK.",
+      "anchor": "is_active"
+    }
+  ],
+  "rationale": "Requires comparing old vs new behavior (context beyond happy-path reading of the new handler). Matches ReviewBench 'API parity' style issues."
+}

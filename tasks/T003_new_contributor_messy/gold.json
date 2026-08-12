@@ -1,0 +1,6 @@
+{
+  "triage_label": "vouching_required",
+  "triage_priority": 0.55,
+  "findings": [],
+  "rationale": "Likely a real bugfix (null guard) but from a first-time contributor with thin process signal. Not noise, not auto-merge trust — gold is vouching_required. Tests the middle class of triage that pure size heuristics often mis-bin."
+}

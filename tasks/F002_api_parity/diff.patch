@@ -1,0 +1,27 @@
+diff --git a/src/routes/users.ts b/src/routes/users.ts
+--- a/src/routes/users.ts
++++ b/src/routes/users.ts
+@@ -1,20 +1,18 @@
+-// legacy endpoint
+-export async function listUsersLegacy(db: DB) {
+-  return db.users.findMany({
+-    where: { is_active: true },
+-    orderBy: { created_at: 'desc' },
+-  })
+-}
+-
+-// migration: replace legacy with v2
+ export async function listUsers(db: DB) {
+-  return listUsersLegacy(db)
++  // v2 handler
++  return db.users.findMany({
++    orderBy: { created_at: 'desc' },
++  })
+ }
+diff --git a/src/routes/users.test.ts b/src/routes/users.test.ts
+--- a/src/routes/users.test.ts
++++ b/src/routes/users.test.ts
+@@ -4,6 +4,6 @@ test('listUsers returns array', async () => {
+   const rows = await listUsers(db)
+   expect(Array.isArray(rows)).toBe(true)
+ })

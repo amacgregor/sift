@@ -1,0 +1,16 @@
+{
+  "id": "T003_new_contributor_messy",
+  "family": "T",
+  "title": "New contributor, real fix, messy presentation",
+  "language": "typescript",
+  "tags": ["vouching", "new-contributor", "triage"],
+  "difficulty": 2,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "fix null crash on empty invoice list",
+  "pr_body": "hi this fixes a crash when invoices is empty. tested locally. first PR here sorry if format wrong",
+  "author": "first-time-contributor",
+  "files_changed": 2,
+  "additions": 18,
+  "deletions": 4
+}

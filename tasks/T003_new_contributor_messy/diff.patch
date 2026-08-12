@@ -1,0 +1,21 @@
+diff --git a/src/billing/invoices.ts b/src/billing/invoices.ts
+--- a/src/billing/invoices.ts
++++ b/src/billing/invoices.ts
+@@ -22,7 +22,10 @@ export function totalOpen(invoices: Invoice[] | null): number {
+-  return invoices.filter(i => i.status === 'open').reduce((a, b) => a + b.amount, 0)
++  if (!invoices || invoices.length === 0) {
++    return 0
++  }
++  return invoices.filter(i => i.status === 'open').reduce((a, b) => a + b.amount, 0)
+ }
+diff --git a/src/billing/invoices.test.ts b/src/billing/invoices.test.ts
+--- a/src/billing/invoices.test.ts
++++ b/src/billing/invoices.test.ts
+@@ -10,3 +10,7 @@ test('sums open invoices', () => {
+   expect(totalOpen([{ status: 'open', amount: 5 }])).toBe(5)
+ })
++
++test('empty list is zero', () => {
++  expect(totalOpen([])).toBe(0)
++  expect(totalOpen(null)).toBe(0)
++})

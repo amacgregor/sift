@@ -1,0 +1,16 @@
+{
+  "id": "T001_bulk_ai_rewrite",
+  "family": "T",
+  "title": "Bulk AI-style rewrite with no tests or plan",
+  "language": "typescript",
+  "tags": ["noise", "volume", "ai-slop-pattern", "triage"],
+  "difficulty": 1,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "refactor: improve code quality and modernize codebase",
+  "pr_body": "Updated several modules for clarity.",
+  "author": "agent-bot-7",
+  "files_changed": 34,
+  "additions": 920,
+  "deletions": 640
+}

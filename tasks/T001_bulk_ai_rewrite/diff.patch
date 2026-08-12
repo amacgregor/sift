@@ -1,0 +1,33 @@
+diff --git a/src/utils/format.ts b/src/utils/format.ts
+--- a/src/utils/format.ts
++++ b/src/utils/format.ts
+@@ -1,12 +1,14 @@
+-export function fmt(n: number) {
+-  return n.toFixed(2)
+-}
++export function formatNumber(value: number): string {
++  return value.toFixed(2);
++}
+ 
+-export function title(s: string) {
+-  return s.trim()
+-}
++export function formatTitle(input: string): string {
++  return input.trim();
++}
+diff --git a/src/utils/dates.ts b/src/utils/dates.ts
+--- a/src/utils/dates.ts
++++ b/src/utils/dates.ts
+@@ -1,5 +1,6 @@
+-export const now = () => Date.now()
++export const getCurrentTimestamp = (): number => {
++  return Date.now();
++};
+diff --git a/src/components/Button.tsx b/src/components/Button.tsx
+--- a/src/components/Button.tsx
++++ b/src/components/Button.tsx
+@@ -3,7 +3,7 @@ export function Button(props: any) {
+-  return <button className="btn" {...props} />
++  return <button className="button" {...props} />;
+ }
+# ... 31 more files of renames and semicolon/style churn omitted for fixture size ...

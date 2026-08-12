@@ -1,0 +1,24 @@
+diff --git a/src/api/admin.py b/src/api/admin.py
+--- a/src/api/admin.py
++++ b/src/api/admin.py
+@@ -1,5 +1,22 @@
+ from flask import Blueprint, request
++from services.projects import db
+ 
+ bp = Blueprint("admin", __name__)
+ 
++@bp.delete("/admin/projects/<project_id>")
++def purge_project(project_id: str):
++    # support tooling: hard delete project
++    row = db.get_by_id("projects", project_id)
++    if not row:
++        return {"error": "not found"}, 404
++    db.delete_by_id("projects", project_id)
++    return {"ok": True}
+diff --git a/src/api/__init__.py b/src/api/__init__.py
+--- a/src/api/__init__.py
++++ b/src/api/__init__.py
+@@ -3,3 +3,4 @@ def create_app():
+     app.register_blueprint(public_bp)
++    app.register_blueprint(admin_bp)
+     return app
