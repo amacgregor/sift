@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from reviewgate.scorers import score_task, summarize
-from reviewgate.suts import get_sut
-from reviewgate.tasks import list_task_ids, load_tasks
+from sift.scorers import score_task, summarize
+from sift.suts import get_sut
+from sift.tasks import list_task_ids, load_tasks
 
 
 def test_seed_task_count():

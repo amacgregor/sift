@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 import time
 
-from reviewgate.schema import PredictedFinding, SutOutput, Task, TriageLabel
+from sift.schema import PredictedFinding, SutOutput, Task, TriageLabel
 
 
 class HeuristicSut:

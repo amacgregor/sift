@@ -1,6 +1,6 @@
 # Methodology
 
-## What ReviewGate measures
+## What Sift measures
 
 Two families of tasks:
 

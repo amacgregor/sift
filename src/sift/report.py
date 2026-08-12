@@ -7,7 +7,7 @@ from typing import Any
 
 def render_markdown(summary: dict[str, Any], *, sut: str) -> str:
     lines = [
-        f"# ReviewGate report — `{sut}`",
+        f"# Sift report — `{sut}`",
         "",
         f"Tasks: **{summary['n_tasks']}**",
         "",

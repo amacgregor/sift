@@ -1,4 +1,4 @@
-"""Task and result schemas for ReviewGate."""
+"""Task and result schemas for Sift."""
 
 from __future__ import annotations
 

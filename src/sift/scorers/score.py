@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections import Counter
 from typing import Any
 
-from reviewgate.schema import GoldFinding, PredictedFinding, SutOutput, Task, TaskScore
+from sift.schema import GoldFinding, PredictedFinding, SutOutput, Task, TaskScore
 
 
 def _normalize(text: str) -> str:

@@ -1,5 +1,5 @@
 [project]
-name = "reviewgate"
+name = "sift"
 version = "0.1.0"
 description = "Eval harness for PR triage and review-finding quality under scarce human attention"
 readme = "README.md"
@@ -13,7 +13,7 @@ llm = ["openai>=1.40.0"]
 dev = ["pytest>=8.0"]
 
 [project.scripts]
-reviewgate = "reviewgate.cli:main"
+sift = "sift.cli:main"
 
 [build-system]
 requires = ["setuptools>=68"]

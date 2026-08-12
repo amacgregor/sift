@@ -8,7 +8,7 @@ import re
 import time
 from typing import Any
 
-from reviewgate.schema import PredictedFinding, SutOutput, Task
+from sift.schema import PredictedFinding, SutOutput, Task
 
 SYSTEM = """You evaluate pull requests for two things:
 1) Triage: should a human spend review attention on this PR?
@@ -32,14 +32,14 @@ class LlmSut:
     name = "llm"
 
     def __init__(self, model: str | None = None):
-        self.model = model or os.environ.get("REVIEWGATE_MODEL", "gpt-4o-mini")
+        self.model = model or os.environ.get("SIFT_MODEL", "gpt-4o-mini")
 
     def run(self, task: Task) -> SutOutput:
         try:
             from openai import OpenAI
         except ImportError as e:
             raise RuntimeError(
-                "LLM SUT requires: pip install 'reviewgate[llm]' and OPENAI_API_KEY"
+                "LLM SUT requires: pip install 'sift[llm]' and OPENAI_API_KEY"
             ) from e
 
         if not os.environ.get("OPENAI_API_KEY"):

@@ -1,9 +1,13 @@
-# ReviewGate
+# Sift
 
-**Eval harness for the scarce layer around AI code review:**  
-whether systems allocate **human attention** correctly, and whether **findings are substantively right** — with **cost** as a first-class metric.
+Separate signal from noise in AI-era code review.
 
-Not another 50-tool bug-finding leaderboard. A small, rigorous harness for **triage + verification**.
+**Eval harness for the scarce layer around AI code review:** whether systems
+allocate **human attention** correctly, and whether **findings are substantively
+right** — with **cost** as a first-class metric.
+
+Not another 50-tool bug-finding leaderboard. A small, rigorous harness for
+**triage + verification**.
 
 ```text
 Family T  →  Is this PR worth a human's time?
@@ -13,15 +17,15 @@ Family F  →  Did we catch real issues without drowning in noise?
 ## Quick start (no API key)
 
 ```bash
-cd reviewgate
+cd sift
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
 # list seed tasks
-python -m reviewgate.cli list
+python -m sift.cli list
 
 # run structural baseline on all tasks
-python -m reviewgate.cli run --sut heuristic --out results/latest
+python -m sift.cli run --sut heuristic --out results/latest
 ```
 
 Open `results/latest/report.md`.
@@ -31,7 +35,7 @@ Open `results/latest/report.md`.
 ```bash
 pip install -e ".[llm]"
 export OPENAI_API_KEY=...
-python -m reviewgate.cli run --sut llm --out results/llm
+python -m sift.cli run --sut llm --out results/llm
 ```
 
 ## Seed tasks (v0.1)
@@ -49,7 +53,7 @@ python -m reviewgate.cli run --sut llm --out results/llm
 | Decision | Choice |
 |---|---|
 | Runner | Tiny custom Python CLI (Inspect-shaped tasks later) |
-| Name | `reviewgate` |
+| Name | `sift` |
 | Precision | Valid-extras default; `--strict-gold` optional |
 | Languages | Python + TypeScript fixtures |
 | License | MIT |
@@ -61,7 +65,7 @@ Full research, goals, and scope: [`../HARNESS.md`](../HARNESS.md).
 
 Frontier labs and AI-native teams are not short on model demos. They are short on people who can **measure** whether agentic review systems work under real attention constraints.
 
-ReviewGate is a portfolio-grade, demoable artifact for that claim:
+Sift is a portfolio-grade, demoable artifact for that claim:
 
 1. Explicit gold + rationales  
 2. Budgeted capture (attention is scarce)  
@@ -73,7 +77,7 @@ ReviewGate is a portfolio-grade, demoable artifact for that claim:
 
 ```text
 tasks/           seed fixtures (task.json, gold.json, diff.patch, context/)
-src/reviewgate/  runner, SUTs, scorers, report
+src/sift/  runner, SUTs, scorers, report
 tests/           smoke tests for heuristic suite
 results/         run outputs (gitignored except examples)
 METHODOLOGY.md   scoring and limitations

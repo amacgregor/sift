@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from typing import Callable
 
-from reviewgate.schema import SutOutput, Task
-from reviewgate.suts.heuristic import HeuristicSut
-from reviewgate.suts.llm import LlmSut
+from sift.schema import SutOutput, Task
+from sift.suts.heuristic import HeuristicSut
+from sift.suts.llm import LlmSut
 
 SutFn = Callable[[Task], SutOutput]
 

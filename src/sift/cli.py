@@ -1,4 +1,4 @@
-"""CLI entrypoint: reviewgate run|list|report."""
+"""CLI entrypoint: sift run|list|report."""
 
 from __future__ import annotations
 
@@ -7,16 +7,16 @@ import json
 import sys
 from pathlib import Path
 
-from reviewgate import __version__
-from reviewgate.report import render_markdown
-from reviewgate.scorers import score_task, summarize
-from reviewgate.suts import get_sut
-from reviewgate.tasks import list_task_ids, load_tasks
+from sift import __version__
+from sift.report import render_markdown
+from sift.scorers import score_task, summarize
+from sift.suts import get_sut
+from sift.tasks import list_task_ids, load_tasks
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="reviewgate", description="PR triage & review eval harness")
-    parser.add_argument("--version", action="version", version=f"reviewgate {__version__}")
+    parser = argparse.ArgumentParser(prog="sift", description="PR triage & review eval harness")
+    parser.add_argument("--version", action="version", version=f"sift {__version__}")
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     p_list = sub.add_parser("list", help="List task ids")
