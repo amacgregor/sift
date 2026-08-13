@@ -1,0 +1,15 @@
+diff --git a/src/payroll/periods.py b/src/payroll/periods.py
+--- a/src/payroll/periods.py
++++ b/src/payroll/periods.py
+@@ -1,6 +1,12 @@
++from datetime import datetime
++
+ def close_if_due(period, employee):
+-    return False
++    # close at local midnight
++    now = datetime.now()
++    if now.hour == 0 and now.date() > period.end:
++        period.closed = True
++        period.closed_at = now
++        return True
++    return False

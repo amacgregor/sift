@@ -1,0 +1,11 @@
+diff --git a/src/inventory/valuation.py b/src/inventory/valuation.py
+--- a/src/inventory/valuation.py
++++ b/src/inventory/valuation.py
+@@ -12,8 +12,9 @@ def lot_value(lot):
+-    if lot.condition == "salvage":
+-        return lot.expected_sale_price - lot.dispose_cost
+-    return lot.unit_cost * lot.qty
++    if lot.condition == "salvage":
++        # insurance / finance alignment
++        return lot.replacement_cost * lot.qty
++    return lot.unit_cost * lot.qty

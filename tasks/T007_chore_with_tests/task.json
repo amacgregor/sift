@@ -1,0 +1,21 @@
+{
+  "id": "T007_chore_with_tests",
+  "family": "T",
+  "title": "Rename + snapshot tests, no behavior change",
+  "language": "typescript",
+  "tags": [
+    "noise",
+    "tests",
+    "chore",
+    "triage"
+  ],
+  "difficulty": 2,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "chore: rename formatUsd helper and update snapshots",
+  "pr_body": "chore: rename helper for consistency. formatting only, snapshots updated. no behavior change.",
+  "author": "core-maintainer",
+  "files_changed": 2,
+  "additions": 22,
+  "deletions": 18
+}

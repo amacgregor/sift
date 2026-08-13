@@ -1,0 +1,20 @@
+{
+  "id": "F006_auth_header_log",
+  "family": "F",
+  "title": "Debug log writes Authorization header",
+  "language": "typescript",
+  "tags": [
+    "pii",
+    "secrets",
+    "findings"
+  ],
+  "difficulty": 1,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "chore: add request debug logging for partner API",
+  "pr_body": "Temporary logs so we can see what the partner sends.",
+  "author": "platform-eng",
+  "files_changed": 1,
+  "additions": 6,
+  "deletions": 0
+}

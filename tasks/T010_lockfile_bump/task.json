@@ -1,0 +1,20 @@
+{
+  "id": "T010_lockfile_bump",
+  "family": "T",
+  "title": "Dependabot lockfile-only bump",
+  "language": "javascript",
+  "tags": [
+    "noise",
+    "deps",
+    "triage"
+  ],
+  "difficulty": 1,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "chore(deps): bump left-pad from 1.3.0 to 1.3.1",
+  "pr_body": "chore",
+  "author": "dependabot",
+  "files_changed": 1,
+  "additions": 3,
+  "deletions": 3
+}

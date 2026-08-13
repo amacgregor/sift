@@ -1,0 +1,15 @@
+{
+  "triage_label": null,
+  "triage_priority": null,
+  "findings": [
+    {
+      "id": "F-race-debit",
+      "path": "src/billing/wallet.py",
+      "title": "Non-atomic balance check then debit can double-spend",
+      "severity": "critical",
+      "rationale": "Two concurrent requests can both observe balance >= amount and both write balance - amount. Money-handling requires UPDATE ... WHERE balance >= amount, a row lock, or a ledger append. This is a substantive correctness bug.",
+      "anchor": "balance"
+    }
+  ],
+  "rationale": "No tenant token, no dropped filter. Heuristics that only look at authz/parity miss it."
+}

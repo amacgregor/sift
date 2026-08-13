@@ -1,0 +1,6 @@
+{
+  "triage_label": "vouching_required",
+  "triage_priority": 0.45,
+  "findings": [],
+  "rationale": "Real product change, known author, no tests. Worth a skim (export + authz assumptions) but not a first-slot security review. vouching_required is the honest middle."
+}

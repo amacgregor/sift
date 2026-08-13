@@ -1,0 +1,21 @@
+{
+  "id": "T006_large_security_fix",
+  "family": "T",
+  "title": "Real session-fixation fix buried in a large PR",
+  "language": "python",
+  "tags": [
+    "security",
+    "session",
+    "volume",
+    "triage"
+  ],
+  "difficulty": 3,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "fix: rotate session on privilege change and harden cookie flags",
+  "pr_body": "Security fix for session fixation after role elevation.\n\nRoot cause: login and promote_user reused the pre-auth session id.\nPlan: rotate session, set Secure/HttpOnly/SameSite, add regression tests.\nAlso includes the supporting middleware extract that made the bug possible \u2014 the PR is large because the session helper moved modules.",
+  "author": "core-maintainer",
+  "files_changed": 28,
+  "additions": 510,
+  "deletions": 340
+}

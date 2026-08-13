@@ -1,0 +1,9 @@
+diff --git a/src/http/pagination.ts b/src/http/pagination.ts
+--- a/src/http/pagination.ts
++++ b/src/http/pagination.ts
+@@ -1,4 +1,4 @@
+-export const DEFAULT_LIMIT = 20
++export const DEFAULT_LIMIT = 1000
+ export function paginate(q: Query) {
+   const limit = q.limit ?? DEFAULT_LIMIT
+   return { limit, offset: q.offset ?? 0 }

@@ -1,0 +1,15 @@
+{
+  "triage_label": null,
+  "triage_priority": null,
+  "findings": [
+    {
+      "id": "F-page-size-contract",
+      "path": "src/http/pagination.ts",
+      "title": "Default page size change is an implicit API contract break",
+      "severity": "medium",
+      "rationale": "Mobile clients and the billing exporter assume \u226420 rows and materialise the full page in memory. Jumping the default to 1000 is a behavior change for every caller that omitted limit=. Needs a new query param version or a documented major.",
+      "anchor": "DEFAULT_LIMIT"
+    }
+  ],
+  "rationale": "Looks like a performance win. Gold requires knowing callers depend on the old default. Neither a size heuristic nor a simple secret/CSRF checklist should be expected to catch this \u2014 it is the residual miss."
+}

@@ -1,0 +1,9 @@
+diff --git a/src/invoices/export.ts b/src/invoices/export.ts
+--- /dev/null
++++ b/src/invoices/export.ts
+@@ -0,0 +1,12 @@
++export function toCsv(rows: Invoice[]) {
++  const header = 'id,total,status'
++  const body = rows.map(r => [r.id, r.total, r.status].join(',')).join('\n')
++  return header + '\n' + body
++}

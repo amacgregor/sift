@@ -1,0 +1,15 @@
+{
+  "triage_label": null,
+  "triage_priority": null,
+  "findings": [
+    {
+      "id": "F-authz-header-log",
+      "path": "src/partner/proxy.ts",
+      "title": "Logs full incoming headers including Authorization",
+      "severity": "high",
+      "rationale": "Bearer tokens in application logs are credential leakage. Temporary debug that ships is still a defect. Redact Authorization, Cookie, and Set-Cookie.",
+      "anchor": "authorization"
+    }
+  ],
+  "rationale": "One-line observability change. Easy for a size heuristic to ignore; easy for a secret-logging rule to catch."
+}

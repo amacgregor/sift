@@ -1,0 +1,6 @@
+{
+  "triage_label": "likely_low_value",
+  "triage_priority": 0.08,
+  "findings": [],
+  "rationale": "Formatter-only churn across the tree. High token cost, near-zero review value. Classic AI-volume waste."
+}

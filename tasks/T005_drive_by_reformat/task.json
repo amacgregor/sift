@@ -1,0 +1,21 @@
+{
+  "id": "T005_drive_by_reformat",
+  "family": "T",
+  "title": "Repo-wide formatter drive-by",
+  "language": "python",
+  "tags": [
+    "noise",
+    "formatting",
+    "volume",
+    "triage"
+  ],
+  "difficulty": 1,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "chore: apply black and isort everywhere",
+  "pr_body": "formatting pass. no behavior change.",
+  "author": "agent-bot-7",
+  "files_changed": 41,
+  "additions": 280,
+  "deletions": 260
+}

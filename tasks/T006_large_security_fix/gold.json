@@ -1,0 +1,6 @@
+{
+  "triage_label": "needs_human",
+  "triage_priority": 0.92,
+  "findings": [],
+  "rationale": "Size is a terrible proxy here. The change is a real session-fixation fix with tests. A structural heuristic that punishes LOC/file count will bury it under formatter noise. Gold is needs_human \u2014 this is the budgeted-capture stress case."
+}

@@ -1,0 +1,6 @@
+{
+  "triage_label": "likely_low_value",
+  "triage_priority": 0.12,
+  "findings": [],
+  "rationale": "Tests are present, so a structural heuristic will inflate priority. The change is a rename plus snapshot churn. Attention waste if it occupies a scarce review slot."
+}

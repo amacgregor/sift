@@ -1,0 +1,19 @@
+{
+  "id": "T009_midsize_feature",
+  "family": "T",
+  "title": "Ordinary feature, known author, no tests",
+  "language": "typescript",
+  "tags": [
+    "feature",
+    "triage"
+  ],
+  "difficulty": 1,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "feat: add CSV export of invoice list",
+  "pr_body": "Adds a CSV download on the invoices index.\n\nPlan:\n1. Serialize current filtered rows\n2. Stream as text/csv\nNo new permissions \u2014 uses the existing list endpoint authz.",
+  "author": "core-maintainer",
+  "files_changed": 4,
+  "additions": 96,
+  "deletions": 8
+}

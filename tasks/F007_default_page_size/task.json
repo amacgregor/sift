@@ -1,0 +1,20 @@
+{
+  "id": "F007_default_page_size",
+  "family": "F",
+  "title": "Default page size 20 \u2192 1000 breaks implicit contract",
+  "language": "typescript",
+  "tags": [
+    "api-contract",
+    "findings",
+    "context"
+  ],
+  "difficulty": 2,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "perf: raise default page size for list endpoints",
+  "pr_body": "Clients were making too many round-trips. Default limit 1000. Still overridable.",
+  "author": "api-team",
+  "files_changed": 1,
+  "additions": 2,
+  "deletions": 2
+}

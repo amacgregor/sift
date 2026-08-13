@@ -1,0 +1,21 @@
+{
+  "id": "F004_jurisdiction_tz",
+  "family": "F",
+  "title": "Payroll cutoff uses naive local now()",
+  "language": "python",
+  "tags": [
+    "domain",
+    "payroll",
+    "timezone",
+    "findings"
+  ],
+  "difficulty": 3,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "feat: auto-close pay periods at midnight",
+  "pr_body": "Closes the current pay period automatically so ops does not have to click it.",
+  "author": "payroll-eng",
+  "files_changed": 1,
+  "additions": 14,
+  "deletions": 2
+}

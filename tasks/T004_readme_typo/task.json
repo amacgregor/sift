@@ -1,0 +1,20 @@
+{
+  "id": "T004_readme_typo",
+  "family": "T",
+  "title": "One-word README typo",
+  "language": "markdown",
+  "tags": [
+    "noise",
+    "docs",
+    "triage"
+  ],
+  "difficulty": 1,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "docs: fix typo in README",
+  "pr_body": "typo",
+  "author": "agent-bot-7",
+  "files_changed": 1,
+  "additions": 1,
+  "deletions": 1
+}

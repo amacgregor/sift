@@ -1,0 +1,21 @@
+{
+  "id": "F008_inventory_salvage",
+  "family": "F",
+  "title": "Salvage stock valued at replacement cost",
+  "language": "python",
+  "tags": [
+    "domain",
+    "inventory",
+    "accounting",
+    "findings"
+  ],
+  "difficulty": 3,
+  "source": "synthetic",
+  "license_note": "Synthetic fixture, original work, free to use",
+  "pr_title": "fix: use replacement cost for damaged-lot valuation",
+  "pr_body": "Insurance asked for replacement cost on damaged lots. Wire that into the valuation helper so finance and ops match.",
+  "author": "finance-eng",
+  "files_changed": 1,
+  "additions": 8,
+  "deletions": 4
+}

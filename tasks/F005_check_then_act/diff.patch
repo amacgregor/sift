@@ -1,0 +1,19 @@
+diff --git a/src/billing/wallet.py b/src/billing/wallet.py
+--- a/src/billing/wallet.py
++++ b/src/billing/wallet.py
+@@ -10,4 +10,14 @@ class Wallet:
+     def debit(self, invoice_id, amount):
+-        raise NotImplementedError
++        row = self.db.fetch_one("SELECT balance FROM wallets WHERE id = %s", (self.id,))
++        if row["balance"] >= amount:
++            new_bal = row["balance"] - amount
++            self.db.execute(
++                "UPDATE wallets SET balance = %s WHERE id = %s",
++                (new_bal, self.id),
++            )
++            self.db.execute(
++                "INSERT INTO wallet_tx (wallet_id, invoice_id, amount) VALUES (%s,%s,%s)",
++                (self.id, invoice_id, amount),
++            )
++            return True
++        return False

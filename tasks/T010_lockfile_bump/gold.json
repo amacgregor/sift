@@ -1,0 +1,6 @@
+{
+  "triage_label": "likely_low_value",
+  "triage_priority": 0.06,
+  "findings": [],
+  "rationale": "Patch-level lockfile bump of an unused toy dep. Do not spend a human slot."
+}

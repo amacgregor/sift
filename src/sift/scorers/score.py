@@ -91,12 +91,22 @@ def score_task(
                     found = True
                     break
             if not found:
-                # crude failure codes from gold tags in rationale
                 r = (g.rationale + g.title).lower()
-                if "tenant" in r or "auth" in r:
+                domainish = (
+                    "tenant",
+                    "auth",
+                    "csrf",
+                    "timezone",
+                    "jurisdiction",
+                    "payroll",
+                    "valuation",
+                    "salvage",
+                    "nrv",
+                    "double-spend",
+                    "balance",
+                )
+                if any(tok in r for tok in domainish):
                     failure_codes.append("MISS_DOMAIN")
-                elif "parity" in r or "filter" in r:
-                    failure_codes.append("MISS_CONTEXT")
                 else:
                     failure_codes.append("MISS_CONTEXT")
 
@@ -167,9 +177,10 @@ def summarize(tasks: list[Task], scores: list[TaskScore], outputs: list[SutOutpu
         sum(1 for s in triage_scores if s.triage_correct) / len(triage_scores) if triage_scores else None
     )
 
-    # Budgeted capture @ 20%: rank by triage_score, take top 20%, measure gold needs_human recall
     budgeted = _budgeted_capture(tasks, outputs, budget=0.2)
     waste = _budget_waste(tasks, outputs, budget=0.2)
+    budgeted40 = _budgeted_capture(tasks, outputs, budget=0.4)
+    waste40 = _budget_waste(tasks, outputs, budget=0.4)
 
     mean = lambda xs: sum(xs) / len(xs) if xs else None  # noqa: E731
 
@@ -189,6 +200,8 @@ def summarize(tasks: list[Task], scores: list[TaskScore], outputs: list[SutOutpu
         "findings_n": len(finding_scores),
         "budgeted_capture_at_20pct": budgeted,
         "budget_waste_at_20pct": waste,
+        "budgeted_capture_at_40pct": budgeted40,
+        "budget_waste_at_40pct": waste40,
         "total_cost_usd": sum(s.cost_usd for s in scores),
         "failure_codes": dict(failure_counter),
         "tasks": [s.to_dict() for s in scores],

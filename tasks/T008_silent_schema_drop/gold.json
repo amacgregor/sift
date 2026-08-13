@@ -1,0 +1,6 @@
+{
+  "triage_label": "needs_human",
+  "triage_priority": 0.88,
+  "findings": [],
+  "rationale": "The PR *says* unused. Context shows payroll reports still group on accrual_basis. A dropped live column is a silent production break. Structural signals (tiny, chore, typo) all point the wrong way."
+}

@@ -1,0 +1,6 @@
+{
+  "triage_label": "likely_low_value",
+  "triage_priority": 0.05,
+  "findings": [],
+  "rationale": "Single-character docs fix. Spend zero scarce review budget here."
+}

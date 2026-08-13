@@ -1,0 +1,15 @@
+{
+  "triage_label": null,
+  "triage_priority": null,
+  "findings": [
+    {
+      "id": "F-naive-tz-cutoff",
+      "path": "src/payroll/periods.py",
+      "title": "Period close uses datetime.now() instead of jurisdiction timezone",
+      "severity": "high",
+      "rationale": "Quebec and Atlantic employees are not in the host's local TZ. A naive midnight close on a US-east or UTC box files the wrong calendar day for QPP / federal remittance cutoffs. Domain defect: 'correct' is jurisdiction wall-clock, not server now().",
+      "anchor": "datetime.now"
+    }
+  ],
+  "rationale": "Needs the domain rule in context. Diff looks like a normal scheduler feature."
+}

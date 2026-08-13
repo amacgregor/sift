@@ -1,0 +1,15 @@
+{
+  "triage_label": null,
+  "triage_priority": null,
+  "findings": [
+    {
+      "id": "F-csrf-removed",
+      "path": "src/payouts/views.py",
+      "title": "CSRF validation removed from state-changing payout POST",
+      "severity": "critical",
+      "rationale": "The handler still accepts a browser cookie session. Comment claims the gateway checks CSRF, but this route is also mounted on the internal app without that gateway. State-changing money POST with no CSRF is a substantive defect.",
+      "anchor": "csrf"
+    }
+  ],
+  "rationale": "Structural heuristics looking for tenant/id lookups will miss this. The defect is an omitted check, not a new unsafe query."
+}

@@ -1,0 +1,10 @@
+diff --git a/src/partner/proxy.ts b/src/partner/proxy.ts
+--- a/src/partner/proxy.ts
++++ b/src/partner/proxy.ts
+@@ -14,6 +14,9 @@ export async function forward(req: Request) {
++  console.log('partner inbound', {
++    url: req.url,
++    headers: req.headers, // includes authorization
++  })
+   return fetch(UPSTREAM, { headers: req.headers, method: req.method, body: req.body })
+ }

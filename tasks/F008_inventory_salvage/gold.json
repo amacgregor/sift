@@ -1,0 +1,15 @@
+{
+  "triage_label": null,
+  "triage_priority": null,
+  "findings": [
+    {
+      "id": "F-salvage-nrv",
+      "path": "src/inventory/valuation.py",
+      "title": "Salvage lots must be valued at NRV, not replacement cost",
+      "severity": "high",
+      "rationale": "Damaged/salvage inventory is written down to net realisable value (expected sell price minus completion/disposal). Replacement cost overstates the asset and can overstate a claim. The PR message cites insurance; the ledger still has to follow the valuation policy in context. Domain-only defect.",
+      "anchor": "replacement_cost"
+    }
+  ],
+  "rationale": "Only someone who knows salvage vs replacement vs NRV will flag this. Size, CSRF, tenant, and secret-logging rules all miss. Held out so the suite has a finding neither cheap SUT is supposed to catch."
+}

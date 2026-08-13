@@ -1,0 +1,18 @@
+diff --git a/migrations/0042_drop_accrual.py b/migrations/0042_drop_accrual.py
+--- /dev/null
++++ b/migrations/0042_drop_accrual.py
+@@ -0,0 +1,6 @@
++def upgrade(db):
++    db.execute("ALTER TABLE pay_runs DROP COLUMN accrual_basis")
++
++def downgrade(db):
++    db.execute("ALTER TABLE pay_runs ADD COLUMN accrual_basis text")
+diff --git a/src/models/pay_run.py b/src/models/pay_run.py
+--- a/src/models/pay_run.py
++++ b/src/models/pay_run.py
+@@ -8,7 +8,6 @@ class PayRun:
+     id: str
+     tenant_id: str
+     period_end: date
+-    accrual_basis: str
+     posted_at: datetime | None

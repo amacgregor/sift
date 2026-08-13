@@ -1,0 +1,27 @@
+diff --git a/src/auth/session.py b/src/auth/session.py
+--- a/src/auth/session.py
++++ b/src/auth/session.py
+@@ -20,8 +20,14 @@ def promote_user(request, user_id, role):
+     user.role = role
+     db.commit()
+-    # keep existing session so the UI does not log the user out
+-    return user
++    # SECURITY: privilege change must rotate the session id
++    request.session.rotate()
++    request.session["uid"] = user.id
++    return user
+diff --git a/src/auth/cookies.py b/src/auth/cookies.py
+--- a/src/auth/cookies.py
++++ b/src/auth/cookies.py
+@@ -4,7 +4,10 @@ def set_session_cookie(resp, sid):
+-    resp.set_cookie("sid", sid)
++    resp.set_cookie("sid", sid, secure=True, httponly=True, samesite="Lax")
+diff --git a/tests/test_session.py b/tests/test_session.py
+--- a/tests/test_session.py
++++ b/tests/test_session.py
+@@ -1,3 +1,12 @@
++def test_promote_rotates_session(client):
++    sid = client.login("ada")
++    client.promote("ada", "admin")
++    assert client.cookies["sid"] != sid
+# ... supporting middleware move across ~25 files omitted; metadata reflects full PR size ...

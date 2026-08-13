@@ -1,6 +1,6 @@
 [project]
 name = "sift"
-version = "0.1.0"
+version = "0.2.0"
 description = "Eval harness for PR triage and review-finding quality under scarce human attention"
 readme = "README.md"
 requires-python = ">=3.11"
