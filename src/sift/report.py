@@ -1,8 +1,10 @@
-"""Render markdown reports from suite summaries."""
+"""Render markdown reports from suite summaries or a single live review."""
 
 from __future__ import annotations
 
 from typing import Any
+
+from sift.schema import SutOutput
 
 
 def _fmt(v: Any) -> str:
@@ -13,13 +15,36 @@ def _fmt(v: Any) -> str:
     return str(v)
 
 
+def render_review(out: SutOutput) -> str:
+    lines = [
+        f"# Sift review — `{out.sut}`",
+        "",
+        f"Triage: **{out.triage_label or '—'}**  score={_fmt(out.triage_score)}  "
+        f"latency={out.latency_ms}ms  cost=${out.cost_usd:.4f}",
+        "",
+    ]
+    if out.triage_reasons:
+        lines.append("Reasons:")
+        lines.extend(f"- {r}" for r in out.triage_reasons)
+        lines.append("")
+    if out.findings:
+        lines += ["Findings:", ""]
+        for f in out.findings:
+            lines.append(f"- **{f.severity}** `{f.path}` — {f.title}")
+            if f.rationale:
+                lines.append(f"  {f.rationale}")
+        lines.append("")
+    else:
+        lines += ["Findings: _none_", ""]
+    return "\n".join(lines)
+
+
 def render_markdown(summary: dict[str, Any], *, sut: str) -> str:
     n = summary["n_tasks"]
-    ds = summary.get("dataset_version", "—")
     lines = [
         f"# Sift report — `{sut}`",
         "",
-        f"Tasks: **{n}** · dataset `{ds}`",
+        f"Tasks: **{n}**",
         "",
         "## Headline metrics",
         "",
@@ -63,10 +88,9 @@ def render_markdown(summary: dict[str, Any], *, sut: str) -> str:
         "",
         "## Notes",
         "",
-        "- Precision uses **valid-extras** by default (unmatched but plausible findings are not auto-penalized).",
-        "- Finding match is lexical/anchor-based unless an LLM judge is wired later. Treat F1 as harness-relative.",
-        "- Budgeted capture ranks by SUT `triage_score` and measures recall of `needs_human` gold in the top slice.",
-        "- A perfect 1.0 on this suite is a smell: the seed set is built so cheap strategies miss.",
+        "- Precision uses **valid-extras** by default. `--strict-gold` treats extras as false positives.",
+        "- Finding match is lexical/anchor-based. Treat F1 as harness-relative.",
+        "- Budgeted capture ranks by SUT `triage_score` and measures recall of `needs_human` gold.",
         "",
     ]
     return "\n".join(lines)
@@ -78,8 +102,6 @@ def render_comparison(summaries: list[dict[str, Any]]) -> str:
 
     lines = [
         "# Sift comparison",
-        "",
-        "Same tasks, different strategy. The interesting result is the delta — not a model ranking.",
         "",
         "| Metric | " + " | ".join(f"`{s.get('sut', '?')}`" for s in summaries) + " |",
         "|" + "---|" * (len(summaries) + 1),
@@ -101,16 +123,11 @@ def render_comparison(summaries: list[dict[str, Any]]) -> str:
         cells = " | ".join(_fmt(s.get(key)) for s in summaries)
         lines.append(f"| {label} | {cells} |")
 
-    # Per-task triage deltas for the first two SUTs
     if len(summaries) >= 2:
         a, b = summaries[0], summaries[1]
         by_a = {t["task_id"]: t for t in a.get("tasks", [])}
         by_b = {t["task_id"]: t for t in b.get("tasks", [])}
-        lines += [
-            "",
-            f"## Where `{b.get('sut')}` differs from `{a.get('sut')}`",
-            "",
-        ]
+        lines += ["", f"## Where `{b.get('sut')}` differs from `{a.get('sut')}`", ""]
         diffs: list[str] = []
         for tid, ta in by_a.items():
             tb = by_b.get(tid)
@@ -125,21 +142,8 @@ def render_comparison(summaries: list[dict[str, Any]]) -> str:
                 )
             fa, fb = ta.get("findings_f1"), tb.get("findings_f1")
             if fa is not None and fb is not None and abs(fa - fb) >= 0.05:
-                diffs.append(
-                    f"- `{tid}` findings F1: `{_fmt(fa)}` → `{_fmt(fb)}`"
-                )
-        if diffs:
-            lines.extend(diffs)
-        else:
-            lines.append("_No triage or F1 deltas above threshold._")
+                diffs.append(f"- `{tid}` findings F1: `{_fmt(fa)}` → `{_fmt(fb)}`")
+        lines.extend(diffs or ["_No triage or F1 deltas above threshold._"])
 
-    lines += [
-        "",
-        "## How to read this",
-        "",
-        "If capture and coverage move when you swap *strategy* (structural heuristic vs domain checklist) "
-        "and cost stays $0, the suite is doing its job. That is the ReviewBench lesson: harness and "
-        "review strategy move scores as much as the model logo.",
-        "",
-    ]
+    lines.append("")
     return "\n".join(lines)

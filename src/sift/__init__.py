@@ -1,4 +1,3 @@
-"""Sift: eval harness for PR triage and review-finding quality."""
+"""Sift: run a review strategy on a diff, or score a task pack if you have one."""
 
-__version__ = "0.2.0"
-DATASET_VERSION = "0.2.0"
+__version__ = "0.3.0"

@@ -1,13 +1,18 @@
 # Changelog
 
+## 0.3.0 — 2026-08-13
+
+- The product is a harness, not a planted suite.
+- `sift review` runs a SUT on a live unified diff. No pack, no gold.
+- `--tasks-dir` / `SIFT_TASKS_DIR` required for pack mode. Nothing in the package
+  points at a default `tasks/` tree.
+- Seed PRs moved to `tests/fixtures/seed/` (test data only).
+- Removed the `checklist` SUT. It was a regex catalog of those fixtures.
+
 ## 0.2.0 — 2026-08-13
 
-- 18 seed tasks (10 triage, 8 findings). Designed misses included.
-- `checklist` SUT: domain catalog on top of the structural heuristic.
-- `sift compare` — side-by-side report. Checked-in ablation: capture @ 20% 0.33 → 0.67, findings F1 0.25 → 0.75, $0.
-- Optional `llm_structured` SUT (same model, invariant-first prompt).
-- `DEMO.md` 3-minute hiring-manager script.
+- 18 synthetic tasks and a checklist ablation. Retracted as a product result.
 
 ## 0.1.0 — 2026-08-12
 
-- Scaffold, 5 seeds, heuristic + one-shot LLM SUT, lexical scorer.
+- Scaffold, heuristic + one-shot LLM SUT, lexical scorer.
